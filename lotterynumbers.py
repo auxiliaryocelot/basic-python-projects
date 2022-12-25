@@ -1,8 +1,14 @@
-# Lottery Ticket Number Generator
+####################################
+#                                  #
+# Lottery Ticket Number Generator  #
+#                                  #
+####################################
 
 import random
 
-game_selection = int(input("Which game do you want numbers for? Enter 1 for MegaMillions, or 2 for Powerball: "))
+# Ask the user for a selection
+
+game_selection = int(input("""Which game would you like numbers for? Type "1" for Mega Millions, or "2" for Powerball: """))
 mm_numbers = []
 pb_numbers = []
 
@@ -12,7 +18,7 @@ if game_selection == 1:
     for m in range (5):
         mm_numbers.append(random.randint(1, 70))
     mm_numbers.sort()
-    print(mm_numbers)
+    print(f'Mega Millions Numbers: {mm_numbers}')
     megaball = random.randint(1, 25)
     print(f"Megaball Number: {megaball}")
 
@@ -22,7 +28,7 @@ elif game_selection == 2:
     for p in range(5):
         pb_numbers.append(random.randint(1, 69))
     pb_numbers.sort()
-    print(f"Ticket Numbers: {pb_numbers}")
+    print(f"Powerball Numbers: {pb_numbers}")
     powerball = random.randint(1, 26)
     print(f"Powerball Number: {powerball}")
 
@@ -30,3 +36,8 @@ elif game_selection == 2:
 
 else:
     print("Incorrect input. Please try again.")
+
+
+# Probably not the best way to keep the program from
+# immediately closing, but I'm open to suggestions!
+input("")
