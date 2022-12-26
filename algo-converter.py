@@ -33,3 +33,9 @@ if response.status_code == 200:
 
 else:
     print("ERROR: Unable to get price data.")
+    
+    
+### Probably not the best way to keep the program from
+### immediately closing, but I'm open to suggestions!
+
+input("")
