@@ -5,14 +5,12 @@
 ####################################
 
 import requests
+import datetime
 
 ### Prompt user for input, and remove comma if entered
-
-algo_amount = input("Enter an amount in $ALGO: ")
-algo_amount = float(algo_amount.replace(",", ""))
+algo_amount = float(input("Enter an amount in $ALGO: ").replace(",", ""))
 
 ### Setup API variables & parameters
-
 url = "https://api.coingecko.com/api/v3/simple/price"
 
 parameters = {
@@ -22,14 +20,22 @@ parameters = {
 
 response = requests.get(url, params=parameters)
 
-### Calculate, format, and print USD price
 
+# Get the current date and time
+now = datetime.datetime.now()
+
+# Format the date and time as a string
+time_string = now.strftime("%I:%M%p on %A, %B %d")
+
+### Calculate, format, and print prices, along with date/time
 if response.status_code == 200:
     data = response.json()
-    conversion = round(algo_amount * float(data["algorand"]["usd"]), 2)
+    current_price = round(float(data["algorand"]["usd"]), 3)
+    conversion = algo_amount * current_price
     conversion_formatted = "{:,.2f}".format(conversion) # Insert comma for thousands, round to two decimal places
     algo_amount_formatted = "{:,.2f}".format(algo_amount) # Insert comma for thousands, round to two decimal places
-    print(f"{algo_amount_formatted} $ALGO is currently equal to ${conversion_formatted} USD per CoinGecko price information.")
+    
+    print(f"{algo_amount_formatted} $ALGO is currently equal to ${conversion_formatted} USD. $ALGO is currently ${current_price} as of {time_string} as per CoinGecko price information")
 
 else:
     print("ERROR: Unable to get price data.")
