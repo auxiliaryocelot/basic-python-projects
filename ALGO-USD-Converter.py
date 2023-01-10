@@ -1,6 +1,6 @@
 ####################################
 #                                  #
-#    Algorand to USD Converter     #
+#    $ALGO to $USD Converter       #
 #                                  #
 ####################################
 
@@ -34,7 +34,8 @@ if response.status_code == 200:
     conversion_formatted = "{:,.2f}".format(conversion) # Insert comma for thousands, round to two decimal places
     algo_amount_formatted = "{:,.2f}".format(algo_amount) # Insert comma for thousands, round to two decimal places
     
-    print(f"{algo_amount_formatted} $ALGO is currently equal to ${conversion_formatted} USD. $ALGO is currently ${current_price} as of {time_string} as per CoinGecko price information")
+    print(f"{algo_amount_formatted} $ALGO is currently equal to ${conversion_formatted} $USD.")
+    print(f"$ALGO is currently ${current_price} as of {time_string} as per CoinGecko price information")
 
 else:
     print("ERROR: Unable to get price data.")
