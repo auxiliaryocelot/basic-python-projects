@@ -7,10 +7,10 @@
 import requests
 import datetime
 
-### Prompt user for input, and remove comma if entered
+# Prompt user for input, and remove comma if entered
 algo_amount = float(input("Enter an amount in $ALGO: ").replace(",", ""))
 
-### Setup API variables & parameters
+# Setup API variables & parameters
 url = "https://api.coingecko.com/api/v3/simple/price"
 
 parameters = {
@@ -20,14 +20,13 @@ parameters = {
 
 response = requests.get(url, params=parameters)
 
-
 # Get the current date and time
 now = datetime.datetime.now()
 
 # Format the date and time as a string
 time_string = now.strftime("%I:%M%p on %A, %B %d")
 
-### Calculate, format, and print prices, along with date/time
+# Calculate, format, and print prices, along with date/time
 if response.status_code == 200:
     data = response.json()
     current_price = round(float(data["algorand"]["usd"]), 3)
@@ -39,9 +38,8 @@ if response.status_code == 200:
 
 else:
     print("ERROR: Unable to get price data.")
-    
-    
-### Probably not the best way to keep the program from
-### immediately closing, but I'm open to suggestions!
+
+# Probably not the best way to keep the program from
+# immediately closing, but I'm open to suggestions!
 
 input("")
