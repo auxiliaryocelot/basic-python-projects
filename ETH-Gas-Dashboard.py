@@ -6,7 +6,6 @@
 
 import requests
 import datetime
-import json
 
 # Establish API URL's & JSON Variables
 gas_oracle_url = f"https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=3PQ3H3CDBHQ3H19E3R2UIHXMZIUGQI5MEW"
