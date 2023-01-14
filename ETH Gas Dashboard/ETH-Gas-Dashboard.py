@@ -6,10 +6,11 @@
 
 import requests
 import datetime
+from config import key
 
 # Establish API URL's & JSON Variables
-gas_oracle_url = f"https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=3PQ3H3CDBHQ3H19E3R2UIHXMZIUGQI5MEW"
-eth_price_url = f"https://api.etherscan.io/api?module=stats&action=ethprice&apikey=3PQ3H3CDBHQ3H19E3R2UIHXMZIUGQI5MEW"
+gas_oracle_url = f"https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey={key}"
+eth_price_url = f"https://api.etherscan.io/api?module=stats&action=ethprice&apikey={key}"
 gas_price_data = requests.get(gas_oracle_url).json()
 eth_price_data = requests.get(eth_price_url).json()
 
